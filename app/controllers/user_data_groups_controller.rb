@@ -6,7 +6,8 @@ class UserDataGroupsController < ApplicationController
 
   def show
     @group = UserDataGroup.find(params[:id])
-    @fields = UserDataField.all
+    group_field_ids = @group.user_data_field_ids
+    @fields = UserDataField.where.not(id: group_field_ids)
   end
 
   def new
@@ -28,7 +29,18 @@ class UserDataGroupsController < ApplicationController
     field_ids.each do |f|
       @group.user_data_group_items.create(user_data_field_id: f)
     end
-    render json: { message: "add fields success" }, status: :ok
+    redirect_back fallback_location: { action: "show", id: params[:id] }
+  end
+
+  def remove_item
+    @group = UserDataGroup.find(params[:id])
+    item_id = params[:item_id]
+    @item = UserDataGroupItem.find(item_id)
+    if @item.destroy
+      redirect_back fallback_location: { action: "show", id: params[:id] }
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private

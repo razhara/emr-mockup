@@ -2,26 +2,39 @@
   <h1>User Data Group Show</h1>
 
   <div class="main-content">
-    <div><%= @group.id %>. <%= @group.title %></div>
+    <div><h3>Title: <b><%= @group.title %></b></div>
 
     <div><%= @group.description %></div>
 
     <div class="fields-area">
       <h2>Current Fields</h2>
-      <% @group.user_data_fields.each do |gfield| %>
-        <div><%= gfield.id %>. <%= gfield.label %></div>
+      <% @group.user_data_group_items.each do |gfield| %>
+        <div style="display:flex;flex-direction:row;margin-top:20px;margin-bottom:20px;">
+          <div><%= gfield.user_data_field.id %>. <%= gfield.user_data_field.label %></div>
+          <div style="margin-left:10px;">
+            <%= form_with url: remove_item_user_data_group_path(id:@group.id, item_id: gfield.id), method: :delete do %>
+              <%= submit_tag "Delete", style: "background-color: #FF0000;color:#FFFFFF;" %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
 
-    <div class="fields-area" style="margin-top:20px;">
+    <div class="fields-area" style="margin-top:20px;margin-bottom:20px;">
       <div><h3>INPUT AREA</h3></div>
       <%= form_with url: add_fields_user_data_group_path(@group.id) do %>
         <% @fields.each do |field| %>
-          <%= check_box_tag "field_ids[]", field.id, @group.user_data_field_ids.include?(field.id) %>
-          <%=h field.code %><br />
-          <%=h field.label %><br />
+          <div style="margin-top:10px;margin-bottom:10px;display:flex;flex-direction:row;">
+            <div style="margin-right: 15px;">
+              <%= check_box_tag "field_ids[]", field.id, @group.user_data_field_ids.include?(field.id) %>
+            </div>
+            <div>
+              <div>Code: <%=h field.code %><br /></div>
+              <div>Question: <%=h field.label %><br /></div>
+            </div>
+          </div>
         <% end %>
-        <%= submit_tag "Add Fields", class: "btn btn-primary pull-right" %>
+        <%= submit_tag "Add Fields", style: "margin-top:20px;margin-bottom:20px;" %>
       <% end %>
     </div>
 

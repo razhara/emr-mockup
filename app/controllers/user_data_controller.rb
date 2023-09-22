@@ -9,8 +9,8 @@ class UserDataController < ApplicationController
   def show
     user_id = params[:user_id]
     group_id = params[:group_id]
-    group = UserDataGroup.find(group_id)
-    field_ids = group.user_data_field_ids
+    @group = UserDataGroup.find(group_id)
+    field_ids = @group.user_data_field_ids
     @field_values = []
     field_ids.each do |field_id|
       field_val = UserDataValue.find_or_create_by(user_id: user_id, user_data_field_id: field_id)

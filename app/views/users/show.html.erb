@@ -2,10 +2,19 @@
   <h1>UserShow</h1>
 
   <div class="main-content">
-      <div><%= @user.id %>. <%= @user.name %></div>
+    <div style="margin-bottom:30px;"><%= @user.id %>. <%= @user.name %></div>
+
+    <% @user.user_data_values.each do |data|%>
+      <% if data.visible %>
+        <div style="margin-bottom:10px;">
+          <div><%= data.user_data_field.code %></div>
+          <div><%= data.value %></div>
+        </div>
+      <% end%>
+    <% end %>
 
     <%= link_to new_user_path do %>
-      <button style="background-color: #0000FF;color: #FFFFFF;"> New User </button>
+      <button style="background-color: #0000FF;color: #FFFFFF;margin-top:80px;"> New User </button>
     <% end %>
 
     <%= link_to 'Back', users_path %>

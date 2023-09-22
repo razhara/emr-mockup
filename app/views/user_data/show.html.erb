@@ -1,8 +1,27 @@
 <div style="padding: 20px;">
   <h1>Fill Questionnaire</h1>
-    <a href="/"  style="margin-bottom: 10px;"><button><h4><- Home</h4></button></a>
+    <a href="/"  style="margin-bottom: 10px;padding: 5px;"><button><- Home</button></a>
     
-    <% @field_values.each do |fv| %>
-      <div style="margin-bottom: 10px;"><%= fv.user_data_field.label %></div>
+    <div><h3>Title: <b><%= @group.title %></b></div>
+
+    <div><%= @group.description %></div>
+
+    <%= form_for @user do |f| %>
+
+      <!-- Add more user fields here as needed -->
+
+      <!-- Fields for user_data_valuees -->
+      <% @field_values.each do |fv| %>
+        <%= f.fields_for :user_data_values, fv do |user_data_value_fields| %>
+        <div class="user_data_value-fields">
+          <%= user_data_value_fields.label :value, value: fv.user_data_field.label %>
+          <%= user_data_value_fields.text_field :value, value: fv.value  %>
+        </div>
+        <% end %>
+      <% end %>
+      <div class="actions">
+        <%= f.submit "Update Answers" %>
+      </div>
     <% end %>
+
 </div>

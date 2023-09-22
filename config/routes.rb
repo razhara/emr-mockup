@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :user_data_groups do
     member do
       post 'add_fields'
+      delete '/remove_item/:item_id', to: 'user_data_groups#remove_item', as: :remove_item
     end
   end
 
