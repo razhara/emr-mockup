@@ -1,1 +1,8 @@
-SHOW????
+<div style="padding: 20px;">
+  <h1>Fill Questionnaire</h1>
+    <a href="/"  style="margin-bottom: 10px;"><button><h4><- Home</h4></button></a>
+    
+    <% @field_values.each do |fv| %>
+      <div style="margin-bottom: 10px;"><%= fv.user_data_field.label %></div>
+    <% end %>
+</div>
