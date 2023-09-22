@@ -1,0 +1,10 @@
+<div class="form-content" style="padding: 20px;">
+  <%= form_with model: @user do |f| %>
+    <div style="display:flex;flex-direction: column;">
+      <%= f.text_field :name, placeholder: "Name", required: true %>
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back', users_path %>
+</div>

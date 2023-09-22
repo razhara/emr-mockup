@@ -1,0 +1,19 @@
+<div style="padding: 20px;">
+  <h1>Fields#index</h1>
+  <a href="/"  style="margin-bottom: 10px;"><button><h4><- Home</h4></button></a>
+  
+  <div class="main-content">
+    <% @fields.each do |field| %>
+      <div style="display:flex;flex-direction:row;margin-top:20px;">
+        <div><%= field.id %>. <%= field.code %> - <%= field.label %></div>
+        <%= link_to user_data_field_path(field), style: "margin-left:10px;" do %>
+        <button> See Details </button>
+        <%end%>
+      </div>
+    <% end %>
+
+    <%= link_to new_user_data_field_path do %>
+      <button style="background-color: #0000FF;color: #FFFFFF; margin-top:20px;"> New Fields </button>
+    <% end %>
+  </div>
+</div>

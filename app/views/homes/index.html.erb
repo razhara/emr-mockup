@@ -1,0 +1,21 @@
+<div style="padding: 20px;">
+  <h1>EMR Mockup Home</h1>
+    <div style="display:flex;flex-direction: column;">
+      <%= link_to users_path do %>
+        <button style="background-color: #0000FF;color: #FFFFFF; margin-top:20px; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;""> Manage User </button>
+      <% end %>
+      
+      <%= link_to user_data_fields_path do %>
+        <button style="background-color: #0000FF;color: #FFFFFF; margin-top:20px; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;"> Manage Field </button>
+      <% end %>
+      
+      <%= link_to user_data_groups_path do %>
+        <button style="background-color: #0000FF;color: #FFFFFF; margin-top:20px; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;"> Manage Group </button>
+      <% end %>
+
+      <%= link_to questionnaire_path do %>
+        <button style="background-color: #0000FF;color: #FFFFFF; margin-top:20px; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;"> Fill Questionnaire </button>
+      <% end %>
+    </div>
+  </div>
+</div>

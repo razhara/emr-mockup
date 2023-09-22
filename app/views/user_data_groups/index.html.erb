@@ -1,0 +1,18 @@
+<div style="padding: 20px;">
+  <h1>Groups#index</h1>
+  <a href="/"  style="margin-bottom: 10px;"><button><h4><- Home</h4></button></a>
+  
+  <div class="main-content">
+    <% @groups.each do |group| %>
+      <div style="display:flex;flex-direction:row;margin-top:20px;">
+        <div><%= group.id %>. <%= group.title %></div>
+        <%= link_to user_data_group_path(group), style: "margin-left:10px;" do %>
+        <button> See Details </button>
+      <%end%>
+    <% end %>
+
+    <%= link_to new_user_data_group_path do %>
+      <button style="background-color: #0000FF;color: #FFFFFF; margin-top:20px;"> New Group </button>
+    <% end %>
+  </div>
+</div>

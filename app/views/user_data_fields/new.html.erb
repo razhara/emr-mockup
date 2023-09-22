@@ -1,0 +1,9 @@
+<div class="form-content" style="padding: 20px;">
+  <%= form_with model: @field do |f| %>
+    <%= f.text_field :code, placeholder: "Code", required: true %>
+    <%= f.text_field :label, placeholder: "Label", required: true %>
+    <%= f.submit %>
+  <% end %>
+
+  <%= link_to 'Back', user_data_fields_path %>
+</div>

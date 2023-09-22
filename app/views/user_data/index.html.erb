@@ -1,0 +1,14 @@
+<div style="padding: 20px;">
+  <h1>Fill Questionnaire</h1>
+    <a href="/"  style="margin-bottom: 10px;"><button><h4><- Home</h4></button></a>
+    
+    <%= form_with url: questionnaire_fill_path, method: :get do %>
+      <h3>Select User</h3>
+      <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "name") %>
+      <br>
+      <h3>Select Questionnaire</h3>
+      <%= select_tag "group_id", options_from_collection_for_select(@groups, "id", "title") %>
+      <br>
+      <%= submit_tag "Go Fill",  style:"margin-top: 10px;" %>
+    <% end %>
+</div>

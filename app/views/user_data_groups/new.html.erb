@@ -1,0 +1,9 @@
+<div class="form-content" style="padding: 20px;">
+  <%= form_with model: @group do |f| %>
+    <%= f.text_field :title, placeholder: "Title", required: true %>
+    <%= f.text_area :description, placeholder: "Description", required: true %>
+    <%= f.submit %>
+  <% end %>
+
+  <%= link_to 'Back', user_data_groups_path %>
+</div>

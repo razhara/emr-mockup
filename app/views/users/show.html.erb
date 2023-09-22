@@ -1,0 +1,13 @@
+<div style="padding: 20px;">
+  <h1>UserShow</h1>
+
+  <div class="main-content">
+      <div><%= @user.id %>. <%= @user.name %></div>
+
+    <%= link_to new_user_path do %>
+      <button style="background-color: #0000FF;color: #FFFFFF;"> New User </button>
+    <% end %>
+
+    <%= link_to 'Back', users_path %>
+  </div>
+</div>

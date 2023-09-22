@@ -1,0 +1,30 @@
+<div style="padding: 20px;">
+  <h1>User Data Group Show</h1>
+
+  <div class="main-content">
+    <div><%= @group.id %>. <%= @group.title %></div>
+
+    <div><%= @group.description %></div>
+
+    <div class="fields-area">
+      <h2>Current Fields</h2>
+      <% @group.user_data_fields.each do |gfield| %>
+        <div><%= gfield.id %>. <%= gfield.label %></div>
+      <% end %>
+    </div>
+
+    <div class="fields-area" style="margin-top:20px;">
+      <div><h3>INPUT AREA</h3></div>
+      <%= form_with url: add_fields_user_data_group_path(@group.id) do %>
+        <% @fields.each do |field| %>
+          <%= check_box_tag "field_ids[]", field.id, @group.user_data_field_ids.include?(field.id) %>
+          <%=h field.code %><br />
+          <%=h field.label %><br />
+        <% end %>
+        <%= submit_tag "Add Fields", class: "btn btn-primary pull-right" %>
+      <% end %>
+    </div>
+
+    <%= link_to 'Back', user_data_groups_path %>
+  </div>
+</div>
